@@ -1,6 +1,7 @@
 import React from 'react';
 import {Header} from '../../components/Header/index';
-import {Dropdown} from '../../components/Dropdown/index';
+// import {Dropdown} from '../../components/Dropdown/index';
+import FindFalconeControls from '../../containers/findFalconeControls/findFalconControls';
 
 
 
@@ -14,7 +15,8 @@ class Layout extends React.Component {
         
         <div>
             <Header  />
-            <Dropdown />
+            {/* <Dropdown /> */}
+            <FindFalconeControls />
 
 
         </div>
