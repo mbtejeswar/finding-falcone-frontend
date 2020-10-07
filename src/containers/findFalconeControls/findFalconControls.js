@@ -30,7 +30,7 @@ class FindFalconControls extends React.Component{
             <div className='select-planets-container'>
              
                 {this.props.selectedPlanets.map((_,index)=>{
-                return <SelectPlanets key={index} index={index}/>
+                return <SelectPlanets key={index} planetindex={index}/>
                 })}
             </div>
 
