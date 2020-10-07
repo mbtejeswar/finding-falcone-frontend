@@ -2,15 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchPlanetsAction,fetchVehiclesAction} from '../../store/actions/fetchActions';
 import SelectPlanets from '../../components/selectPlanet/selectPlanet';
-
+import  './findFalconControls.css';
 
 
 
 
 class FindFalconControls extends React.Component{
-    state = {
-        selectPlanets : ['','','','']
-    }
+
 
 
     componentDidMount() {
@@ -19,23 +17,23 @@ class FindFalconControls extends React.Component{
 
       }
 
-
     render(){
-        
-     
 
- 
         return(
        
         // <div></div>
         // {Planets}
-        <div main-container>
+        <div className = 'main-container'>
             <div className="Heading">
                 <h2>Select planets you wish to search in:</h2>
             </div>
-            {this.state.selectPlanets.map((_,index)=>{
-               return <SelectPlanets key={index}/>
-            })}
+            <div className='select-planets-container'>
+             
+                {this.props.selectedPlanets.map((_,index)=>{
+                return <SelectPlanets key={index} index={index}/>
+                })}
+            </div>
+
         </div>
      
         )
@@ -48,7 +46,8 @@ class FindFalconControls extends React.Component{
 const mapStateToProps = (state)=>{
     return{
         planets:state.planets,
-        vehicles:state.vehicles
+        vehicles:state.vehicles,
+        selectedPlanets:state.selectedPlanets
     }
 
 }
