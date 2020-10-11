@@ -3,9 +3,15 @@
     margin: 0 auto;
 }
 
+.planets-time-container{
+    display: flex;
+    
+}
+
 .select-planets-container{
+    width: 80%;
     display: grid;
     /* grid-template-columns:1fr 1fr 1fr 1fr; */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     justify-content: space-between;
-}   
+}

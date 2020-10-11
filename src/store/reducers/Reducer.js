@@ -23,11 +23,25 @@ export default (state=initialState,action)=>{
 
         case 'STORE_SELECTED_VEHCILE':
             let selectedVehicles = [...state.selectedVehicles]
-            selectedVehicles[action.index]=  action.vehicleName;
-            // let vehicles = [...state.vehicles];
-            // vehicles[action.index].total_no = state.vehicles[action.index].total_no - 1;
-            // console.log(state.vehicles);
-            return {...state,selectedVehicles:selectedVehicles}
+            let vehicles = [...state.vehicles];
+
+            if(selectedVehicles[action.planetIndex]){
+
+                let vehicleIndex =  vehicles.findIndex((x)=>{
+                    
+                    return x.name === selectedVehicles[action.planetIndex]
+                })
+                vehicles[vehicleIndex].total_no = state.vehicles[vehicleIndex].total_no + 1;
+                
+                
+                
+            }
+
+            selectedVehicles[action.planetIndex]=  action.vehicleName;
+           
+            vehicles[action.index].total_no = state.vehicles[action.index].total_no - 1;
+
+            return {...state,selectedVehicles:selectedVehicles,vehicles:vehicles}
 
         default:
             return state;
