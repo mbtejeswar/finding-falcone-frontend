@@ -3,7 +3,8 @@ const initialState = {
     vehicles:[],
     selectedPlanets:['','','',''],
     selectedVehicles:['','','',''],
-    findFalconeResult:{}
+    findFalconeResult:{},
+    token:''
 }
 
 
@@ -42,6 +43,9 @@ export default (state=initialState,action)=>{
             vehicles[action.index].total_no = state.vehicles[action.index].total_no - 1;
 
             return {...state,selectedVehicles:selectedVehicles,vehicles:vehicles}
+
+        case('GET_API_TOKEN'):
+            return{...state, token:action.payload}
 
         default:
             return state;
