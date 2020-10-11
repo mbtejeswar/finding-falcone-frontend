@@ -28,3 +28,17 @@ fetchVehicles()
   .catch((err)=>console.log(err))
 
 }
+
+export const fetchToken = (dispatch)=>{
+  fetchToken()
+    .then((res)=>{
+      return(dispatch({
+        type:'GET_API_TOKEN',
+        payload:res.data
+      }))
+      
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+}
