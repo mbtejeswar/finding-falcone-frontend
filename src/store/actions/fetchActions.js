@@ -1,5 +1,5 @@
-import {fetchPlanets} from '../../api/api-client'
-import {fetchVehicles} from '../../api/api-client'
+import {fetchPlanets,fetchVehicles,fetchToken,findFalcone} from '../../api/api-client'
+
 
 
 
@@ -29,16 +29,32 @@ fetchVehicles()
 
 }
 
-export const fetchToken = (dispatch)=>{
+export const fetchTokenAction = (dispatch)=>{
+
   fetchToken()
     .then((res)=>{
       return(dispatch({
         type:'GET_API_TOKEN',
         payload:res.data
       }))
+
       
     })
     .catch((err)=>{
       console.log(err)
     })
+}
+
+
+export const findFalconeAction = (requestPayload)=>{
+  console.log(requestPayload);
+  findFalcone(requestPayload)
+  .then((res)=>{
+
+    console.log(res);
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+
 }

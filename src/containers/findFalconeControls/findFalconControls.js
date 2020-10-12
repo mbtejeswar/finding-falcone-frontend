@@ -1,11 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchPlanetsAction,fetchVehiclesAction} from '../../store/actions/fetchActions';
+import {fetchPlanetsAction,fetchVehiclesAction,fetchTokenAction,findFalconeAction} from '../../store/actions/fetchActions';
 import SelectPlanets from '../../components/selectPlanet/selectPlanet';
 import  './findFalconControls.css';
-
-
-
 
 class FindFalconControls extends React.Component{
 
@@ -26,11 +23,18 @@ class FindFalconControls extends React.Component{
     componentDidMount() {
         this.props.fetchPlanetsAction();
         this.props.fetchVehiclesAction();
+        this.props.fetchTokenAction();
+        
 
       }
 
       onSubmitHandler = ()=>{
-
+        const {token,selectedPlanets,selectedVehicles, findFalconeAction} = this.props;
+        findFalconeAction({
+            token:token,
+            planet_names:selectedPlanets,
+            vehicle_names:selectedVehicles
+        })
       }
 
     render(){
@@ -59,7 +63,7 @@ class FindFalconControls extends React.Component{
             </div>
 
             <div>
-                <button onClick={this.onSubmitHandler}>Find Falcone!</button>
+                <button  onClick={this.onSubmitHandler}><a href="/result">Find Falcone!</a></button>
             </div>
 
 
@@ -79,7 +83,8 @@ const mapStateToProps = (state)=>{
         planets:state.planets,
         vehicles:state.vehicles,
         selectedPlanets:state.selectedPlanets,
-        selectedVehicles:state.selectedVehicles
+        selectedVehicles:state.selectedVehicles,
+        token:state.token
     }
 
 }
@@ -88,7 +93,9 @@ const mapDispatchToProps = (dispatch)=>{
 
     return{
         fetchPlanetsAction:()=>fetchPlanetsAction(dispatch),
-        fetchVehiclesAction:()=>fetchVehiclesAction(dispatch)
+        fetchVehiclesAction:()=>fetchVehiclesAction(dispatch),
+        fetchTokenAction:()=>fetchTokenAction(dispatch),
+        findFalconeAction:(requestPayload)=>findFalconeAction(requestPayload)
 
     }
 }

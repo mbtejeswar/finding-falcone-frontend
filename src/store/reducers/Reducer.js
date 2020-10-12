@@ -44,8 +44,9 @@ export default (state=initialState,action)=>{
 
             return {...state,selectedVehicles:selectedVehicles,vehicles:vehicles}
 
-        case('GET_API_TOKEN'):
-            return{...state, token:action.payload}
+        case 'GET_API_TOKEN':
+            console.log(action.payload);
+            return{...state, token:action.payload.token}
 
         default:
             return state;

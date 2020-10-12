@@ -10,9 +10,13 @@ const endpoint = process.env.REACT_APP_SERVICE_URI? process.env.REACT_APP_SERVIC
   };
 
   export const fetchToken = ()=>{
-    return axios.get(`${endpoint}/token`);
+    axios.defaults.headers.common["Accept"] = "application/json";
+    axios.defaults.headers.common["Content-Type"] = "application/json";
+    return axios.post(`${endpoint}/token`,{});
   }
-  export const findFalcone = (token,selectedPlanets,selectedVehicles)=>{
-    return axios.post(`${endpoint}/findFalcone`);
+  export const findFalcone = (requestPayload)=>{
+    
+    
+    return axios.post(`${endpoint}/find`,requestPayload);
   }
 
