@@ -63,7 +63,7 @@ class FindFalconControls extends React.Component{
             </div>
 
             <div>
-                <button  onClick={this.onSubmitHandler}><a href="/result">Find Falcone!</a></button>
+                <button  onClick={this.onSubmitHandler}>Find Falcone!</button>
             </div>
 
 

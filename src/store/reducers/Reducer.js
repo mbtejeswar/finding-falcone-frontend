@@ -4,7 +4,8 @@ const initialState = {
     selectedPlanets:['','','',''],
     selectedVehicles:['','','',''],
     findFalconeResult:{},
-    token:''
+    token:'',
+    result:{}
 }
 
 
@@ -47,6 +48,9 @@ export default (state=initialState,action)=>{
         case 'GET_API_TOKEN':
             console.log(action.payload);
             return{...state, token:action.payload.token}
+
+        case 'FIND_FALCONE':
+            return{...state, result:action.payload}
 
         default:
             return state;
