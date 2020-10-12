@@ -46,12 +46,14 @@ export const fetchTokenAction = (dispatch)=>{
 }
 
 
-export const findFalconeAction = (requestPayload)=>{
+export const findFalconeAction = (requestPayload,dispatch)=>{
   console.log(requestPayload);
   findFalcone(requestPayload)
   .then((res)=>{
-
-    console.log(res);
+    return(dispatch({
+      type:'FIND_FALCONE',
+      payload:res.data
+    }))
   })
   .catch((err)=>{
     console.log(err);

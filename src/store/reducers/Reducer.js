@@ -50,6 +50,7 @@ export default (state=initialState,action)=>{
             return{...state, token:action.payload.token}
 
         case 'FIND_FALCONE':
+            console.log(action.payload)
             return{...state, result:action.payload}
 
         default:

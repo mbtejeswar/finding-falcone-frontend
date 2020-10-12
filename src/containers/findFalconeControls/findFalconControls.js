@@ -28,6 +28,8 @@ class FindFalconControls extends React.Component{
 
       }
 
+
+
       onSubmitHandler = ()=>{
         const {token,selectedPlanets,selectedVehicles, findFalconeAction} = this.props;
         findFalconeAction({
@@ -35,6 +37,7 @@ class FindFalconControls extends React.Component{
             planet_names:selectedPlanets,
             vehicle_names:selectedVehicles
         })
+        this.props.history.push({pathname:'/result', state:{timeTaken:this.calculateTravelTime()}})
       }
 
     render(){
@@ -95,7 +98,8 @@ const mapDispatchToProps = (dispatch)=>{
         fetchPlanetsAction:()=>fetchPlanetsAction(dispatch),
         fetchVehiclesAction:()=>fetchVehiclesAction(dispatch),
         fetchTokenAction:()=>fetchTokenAction(dispatch),
-        findFalconeAction:(requestPayload)=>findFalconeAction(requestPayload)
+        findFalconeAction:(requestPayload)=>findFalconeAction(requestPayload,dispatch),
+        
 
     }
 }
