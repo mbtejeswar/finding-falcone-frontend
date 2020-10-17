@@ -1,9 +1,10 @@
 import React from 'react';
-import {Header} from '../../components/Header/index';
+import Header from '../../components/Header/index';
 // import {Dropdown} from '../../components/Dropdown/index';
 import FindFalconeControls from '../../containers/findFalconeControls/findFalconControls';
 import FindFalconeResult from '../../containers/findingFalconeResult/findingFalconeResult';
 import {Route} from 'react-router-dom';
+import Aux from '../Auxilary/Auxilary';
 
 
 class Layout extends React.Component {
@@ -13,14 +14,13 @@ class Layout extends React.Component {
     render(){
         return( 
         
-        <div>
+        <Aux>
             <Header  />
-            {/* <Dropdown /> */}
             <Route exact path='/' component={FindFalconeControls} />
             <Route exact path='/result' component={FindFalconeResult} />
 
 
-        </div>
+        </Aux>
 
             )
     }

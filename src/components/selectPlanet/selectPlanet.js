@@ -1,15 +1,20 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Select from 'react-select';
+import classes from './selectPlanet.css';
+import { useEffect } from 'react';
 // import SelectVehicle from '../selectVehicle/selectvehicle';
 
 
 
-const selectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlanets,selectedVehicle})=>{
+const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlanets,selectedVehicle,selectedVehicles})=>{
 
     const planetSelecthandler = (event,index)=>{ 
         selectedPlanet(event.value,index);
+
       }
+
+    
 
     const vehicleSelectHandler = (event,index,planetIndex)=>{
         selectedVehicle(event.target.value,index,planetIndex)
@@ -36,8 +41,9 @@ const selectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
 
     return(
  
-        <div >
-            <Select 
+        <div className="selectPlanet">
+            <Select
+             value={selectedPlanets[planetindex]!==''? {value:selectedPlanets[planetindex], label:selectedPlanets[planetindex]}: 'Select...'}
             options={planetList.map((planet)=>(
             {value:planet.name,
             label:planet.name}
@@ -73,7 +79,8 @@ const mapStateToProps = (state)=>{
     return{
         planets:state.planets,
         vehicles:state.vehicles,
-        selectedPlanets:state.selectedPlanets
+        selectedPlanets:state.selectedPlanets,
+        selectedVehicles:state.selectedVehicles
     }
 
 }
@@ -85,4 +92,4 @@ const mapDispatchToProps = (dispatch)=>{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(selectPlanet);
+export default connect(mapStateToProps,mapDispatchToProps)(SelectPlanet);

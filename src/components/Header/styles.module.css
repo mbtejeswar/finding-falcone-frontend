@@ -36,3 +36,7 @@ a{
 .heading {
   margin: 0;
 }
+
+.Reset{
+  cursor: pointer;
+}

@@ -21,6 +21,10 @@ export default (state=initialState,action)=>{
         case 'STORE_SELECTED_PLANET':
             let selectedPlanets = [...state.selectedPlanets]
             selectedPlanets[action.index]=  action.planetName;
+            // let selectedVehicles = [...state.selectedVehicles];
+            // if(selectedVehicles[action.index]){
+            //     selectedVehicles[action.index] = '';
+            // }
             return {...state,selectedPlanets:selectedPlanets}
 
         case 'STORE_SELECTED_VEHCILE':
@@ -33,10 +37,7 @@ export default (state=initialState,action)=>{
                     
                     return x.name === selectedVehicles[action.planetIndex]
                 })
-                vehicles[vehicleIndex].total_no = state.vehicles[vehicleIndex].total_no + 1;
-                
-                
-                
+                vehicles[vehicleIndex].total_no = state.vehicles[vehicleIndex].total_no + 1;    
             }
 
             selectedVehicles[action.planetIndex]=  action.vehicleName;
@@ -52,6 +53,9 @@ export default (state=initialState,action)=>{
         case 'FIND_FALCONE':
             console.log(action.payload)
             return{...state, result:action.payload}
+
+        case 'RESET':
+            return{...state, selectedPlanets:['','','',''], selectedVehicles:['','','','']};
 
         default:
             return state;

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {connect} from 'react-redux'
 import styles from './styles.module.css';
 
-function Header({heading}) {
+function Header(props, {heading}) {
+
+
   return (
     <header className={styles['header']}>
       <div className={styles['left-container']}>
@@ -15,7 +17,7 @@ function Header({heading}) {
         )}
       </div>
       <div className={styles['right-container']}>
-          <div>Reset</div>
+          <div onClick={props.reset} className={styles['Reset']}>Reset</div>
           <div><a href="/">GeekTrust Home</a></div>
       </div>
     </header>
@@ -26,4 +28,11 @@ Header.propTypes = {
   heading: PropTypes.string,
 };
 
-export {Header};
+const mapDispatchToProps= (dispatch)=>(
+  {
+    reset:()=>dispatch({type:'RESET'})
+  }
+
+)
+
+export default connect(null,mapDispatchToProps)(Header);

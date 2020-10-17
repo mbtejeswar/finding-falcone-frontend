@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import {fetchPlanetsAction,fetchVehiclesAction,fetchTokenAction,findFalconeAction} from '../../store/actions/fetchActions';
 import SelectPlanets from '../../components/selectPlanet/selectPlanet';
 import  './findFalconControls.css';
+import Spinner from '../../components/spinner/spinner';
+import ErrorHandler from '../../components/errorHandler/errorHandler';
+import Aux from '../../hoc/Auxilary/Auxilary';
 
 class FindFalconControls extends React.Component{
 
@@ -27,7 +30,11 @@ class FindFalconControls extends React.Component{
         
 
       }
+      
+      componentDidUpdate(){
 
+      }
+    
 
 
       onSubmitHandler = ()=>{
@@ -40,37 +47,76 @@ class FindFalconControls extends React.Component{
         this.props.history.push({pathname:'/result', state:{timeTaken:this.calculateTravelTime()}})
       }
 
+      submitbtnHandler =()=>{
+        let planetVehcileCount = 0;
+        const {selectedPlanets, selectedVehicles} = this.props;
+        selectedPlanets.forEach((planet,index)=>{
+                if(planet){
+                    planetVehcileCount = planetVehcileCount + 1 
+                    if(selectedVehicles[index]){
+                    planetVehcileCount = planetVehcileCount + 1 
+                    } else{
+                        
+                        return true;
+                    }
+                } else
+                {
+                    
+                    return true;
+                }
+          } )
+         if (planetVehcileCount === 8){
+            return false
+         }
+         else{
+             return true
+         }
+
+      }
+
+    
+ 
+
     render(){
+
+
 
         return(
        
         // <div></div>
         // {Planets}
+     
+       
         <div className = 'main-container'>
-            <div className="Heading">
-                 <h2>Select planets you wish to search in:</h2>
-             </div>
+            {this.props.planets.length?(
+                <Aux>
+                <div className="Heading">
+                    <h2>Select planets you wish to search in:</h2>
+                </div>
 
-            <div className="planets-time-container">
                 <div className='select-planets-container'>
-                
                     {this.props.selectedPlanets.map((_,index)=>{
                     return <SelectPlanets key={index} planetindex={index}/>
                     })}
                 </div>
 
-                <div>
-                <h2>Time Taken{this.calculateTravelTime()}</h2>
+                <div className="time">
+                <h2>Time Taken: {this.calculateTravelTime()}</h2>
                 </div>  
             
+            {/* </div> */}
+
+            <div className="searchButton">
+                <button  disabled={this.submitbtnHandler()} onClick={this.onSubmitHandler}>Find Falcone!</button>
             </div>
 
-            <div>
-                <button  onClick={this.onSubmitHandler}>Find Falcone!</button>
-            </div>
+            </Aux>):<Spinner />}
 
 
         </div>
+
+      
+             
         
         
      
