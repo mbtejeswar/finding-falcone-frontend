@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchPlanetsAction,fetchVehiclesAction,fetchTokenAction,findFalconeAction} from '../../store/actions/fetchActions';
 import SelectPlanets from '../../components/selectPlanet/selectPlanet';
 import  './findFalconControls.css';
+import styles from './styles.module.css';
 import Spinner from '../../components/spinner/spinner';
 import ErrorHandler from '../../components/errorHandler/errorHandler';
 import Aux from '../../hoc/Auxilary/Auxilary';
@@ -20,20 +21,16 @@ class FindFalconControls extends React.Component{
         })
         return timeTaken;
     }
-
-
-
     componentDidMount() {
         this.props.fetchPlanetsAction();
         this.props.fetchVehiclesAction();
         this.props.fetchTokenAction();
+        this.props.reset();
         
 
       }
       
-      componentDidUpdate(){
 
-      }
     
 
 
@@ -82,37 +79,32 @@ class FindFalconControls extends React.Component{
 
 
         return(
-       
-        // <div></div>
-        // {Planets}
-     
-       
-        <div className = 'main-container'>
+
+            
+        <div className={styles['mainContainer']}>
             {this.props.planets.length?(
                 <Aux>
-                <div className="Heading">
+                <div className={styles['Heading']}>
                     <h2>Select planets you wish to search in:</h2>
                 </div>
 
-                <div className='select-planets-container'>
+                <div className={styles['selectPlanetsContainer']}>
                     {this.props.selectedPlanets.map((_,index)=>{
                     return <SelectPlanets key={index} planetindex={index}/>
                     })}
                 </div>
 
-                <div className="time">
+                <div className={styles['time']}>
                 <h2>Time Taken: {this.calculateTravelTime()}</h2>
                 </div>  
             
             {/* </div> */}
 
-            <div className="searchButton">
+            <div className={styles['searchButton']}>
                 <button  disabled={this.submitbtnHandler()} onClick={this.onSubmitHandler}>Find Falcone!</button>
             </div>
 
             </Aux>):<Spinner />}
-
-
         </div>
 
       
@@ -145,6 +137,7 @@ const mapDispatchToProps = (dispatch)=>{
         fetchVehiclesAction:()=>fetchVehiclesAction(dispatch),
         fetchTokenAction:()=>fetchTokenAction(dispatch),
         findFalconeAction:(requestPayload)=>findFalconeAction(requestPayload,dispatch),
+        reset:()=>dispatch({type:'RESET'})
         
 
     }

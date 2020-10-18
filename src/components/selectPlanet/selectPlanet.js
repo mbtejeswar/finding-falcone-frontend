@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Select from 'react-select';
-import classes from './selectPlanet.css';
-import { useEffect } from 'react';
 // import SelectVehicle from '../selectVehicle/selectvehicle';
 
 
@@ -14,23 +12,16 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
 
       }
 
-    
-
     const vehicleSelectHandler = (event,index,planetIndex)=>{
         selectedVehicle(event.target.value,index,planetIndex)
 
     }
   
-    const checkDistanceFeasibility = (vehicle,planet)=>{
- 
-
+    const checkDistanceFeasibility = (vehicle,planet)=>{    
         if(vehicle){
        
            return planets[planets.findIndex((x)=>x.name===planet)].distance > vehicle.max_distance
         }
-
-
-
     }
 
     
@@ -59,8 +50,9 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
                     value={vehicle.name} 
                     name={planetindex} 
                     onChange={(event)=>vehicleSelectHandler(event,index,planetindex)} 
-                    disabled={checkDistanceFeasibility(vehicle,selectedPlanets[planetindex]) || vehicle.total_no<=0}>
-                    
+                    disabled={checkDistanceFeasibility(vehicle,selectedPlanets[planetindex]) || vehicle.total_no<=0}
+                    checked={selectedVehicles[planetindex]===vehicle.name}
+                    >
                     </input>
                     {vehicle.name + '(' + vehicle.total_no +')'}
                     

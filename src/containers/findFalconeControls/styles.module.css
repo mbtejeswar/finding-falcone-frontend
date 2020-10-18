@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 1fr 0.1fr;
     grid-template-areas: "heading heading" "planets-select   time" "searchButton searchButton";
+    height: 20rem;
 
 }
 
@@ -23,13 +24,12 @@
 
 .time{
     grid-area: time;
-    width: 175px;
+    min-width: 190px;
 }
 
 .selectPlanetsContainer{
     width: 80%;
     display: grid;
-    /* grid-template-columns:1fr 1fr 1fr 1fr; */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-area: planets-select;
     justify-self: center;
