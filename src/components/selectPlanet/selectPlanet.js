@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Select from 'react-select';
-// import SelectVehicle from '../selectVehicle/selectvehicle';
 
 
 
@@ -43,7 +42,7 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
              />
              <ul>
              {selectedPlanets[planetindex] &&  vehicles.map((vehicle,index)=>(
-                 <li>
+                    <li>
                     <label>
                     <input 
                     type="radio" 
