@@ -6,6 +6,7 @@ import FindFalconeResult from '../../containers/findingFalconeResult/findingFalc
 import {Route} from 'react-router-dom';
 import Aux from '../Auxilary/Auxilary';
 
+import Footer from '../../components/footer/footer';
 
 class Layout extends React.Component {
 
@@ -18,8 +19,7 @@ class Layout extends React.Component {
             <Header  />
             <Route exact path='/' component={FindFalconeControls} />
             <Route exact path='/result' component={FindFalconeResult} />
-
-
+            <Footer />
         </Aux>
 
             )

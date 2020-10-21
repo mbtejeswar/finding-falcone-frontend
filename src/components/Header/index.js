@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import styles from './styles.module.css';
 
+
 function Header(props, {heading}) {
 
 
   return (
     <header className={styles['header']}>
       <div className={styles['left-container']}>
+  
         <div className={styles['text-big']}>Finding Falcon</div>
         {heading && (
           <h1 className={`${styles['text-big']} ${styles['heading']}`}>

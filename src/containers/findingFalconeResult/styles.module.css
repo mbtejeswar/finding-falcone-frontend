@@ -9,3 +9,9 @@ justify-items: center;
 position: absolute;
 width: 100%;
 }
+
+
+@media screen and (max-width: 1000px){
+
+
+}

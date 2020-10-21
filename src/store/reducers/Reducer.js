@@ -1,3 +1,6 @@
+import * as actions from '../actions/actionTypes';
+
+
 const initialState = {
     planets:[],
     vehicles:[],
@@ -12,13 +15,13 @@ const initialState = {
 export default (state=initialState,action)=>{
 
     switch(action.type){
-        case 'FETCH_PLANETS':
+        case actions.FETCH_PLANETS:
             return{...state, planets:action.payload}
 
-        case 'FETCH_VEHICLES':
+        case actions.FETCH_VEHICLES:
             return{...state, vehicles:action.payload}
         
-        case 'STORE_SELECTED_PLANET':
+        case actions.STORE_SELECTED_PLANET:
             let selectedPlanets = [...state.selectedPlanets]
             selectedPlanets[action.index]=  action.planetName;
             // Reset vehicles on planet change
@@ -33,7 +36,7 @@ export default (state=initialState,action)=>{
             }
             return {...state,selectedPlanets:selectedPlanets, selectedVehicles:selectedVehicles}
 
-        case 'STORE_SELECTED_VEHCILE':
+        case actions.STORE_SELECTED_VEHCILE:
              selectedVehicles = [...state.selectedVehicles]
              vehicles = [...state.vehicles];
             if(selectedVehicles[action.planetIndex]){
@@ -46,15 +49,13 @@ export default (state=initialState,action)=>{
             vehicles[action.index].total_no = state.vehicles[action.index].total_no - 1;
             return {...state,selectedVehicles:selectedVehicles,vehicles:vehicles}
 
-        case 'GET_API_TOKEN':
-            console.log(action.payload);
+        case actions.GET_API_TOKEN:
             return{...state, token:action.payload.token}
 
-        case 'FIND_FALCONE':
-            console.log(action.payload)
+        case actions.FIND_FALCONE:
             return{...state, result:action.payload}
 
-        case 'RESET':
+        case actions.RESET:
             selectedVehicles = [...state.selectedVehicles];
             vehicles = [...state.vehicles];
             selectedVehicles.forEach((vehicle,index)=>{

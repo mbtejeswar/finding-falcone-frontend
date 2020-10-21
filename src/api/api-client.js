@@ -1,7 +1,5 @@
 import axios from './axios';
 
-
-
   export const fetchPlanets = () =>{
     return axios.get(`/planets`);
   };
@@ -14,11 +12,7 @@ import axios from './axios';
     axios.defaults.headers.common["Content-Type"] = "application/json";
     return axios.post(`/token`,{});
   }
-  export const findFalcone = (requestPayload)=>{
-    
-    
+  export const findFalcone = (requestPayload)=>{  
     return axios.post(`/find`,requestPayload);
-
-   
   }
 

@@ -1,0 +1,17 @@
+.selectPlanet{
+    margin: 5px;
+   
+}
+
+.selectPlanet h3{
+    text-align: center;
+}
+
+.vehicleSelect{
+    padding: 5%;
+    
+}
+
+.disabled{
+    color: #938989;
+}

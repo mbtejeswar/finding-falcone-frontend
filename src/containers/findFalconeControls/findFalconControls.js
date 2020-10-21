@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchPlanetsAction,fetchVehiclesAction,fetchTokenAction,findFalconeAction} from '../../store/actions/fetchActions';
 import SelectPlanets from '../../components/selectPlanet/selectPlanet';
-import  './findFalconControls.css';
 import styles from './styles.module.css';
 import Spinner from '../../components/spinner/spinner';
 import ErrorHandler from '../../components/errorHandler/errorHandler';
 import Aux from '../../hoc/Auxilary/Auxilary';
+import PropTypes from 'prop-types';
 
 class FindFalconControls extends React.Component{
 
@@ -29,12 +29,8 @@ class FindFalconControls extends React.Component{
         
 
       }
-      
 
-    
-
-
-      onSubmitHandler = ()=>{
+    onSubmitHandler = ()=>{
         const {token,selectedPlanets,selectedVehicles, findFalconeAction} = this.props;
         findFalconeAction({
             token:token,
@@ -44,7 +40,7 @@ class FindFalconControls extends React.Component{
         this.props.history.push({pathname:'/result', state:{timeTaken:this.calculateTravelTime()}})
       }
 
-      submitbtnHandler =()=>{
+    submitbtnHandler =()=>{
         let planetVehcileCount = 0;
         const {selectedPlanets, selectedVehicles} = this.props;
         selectedPlanets.forEach((planet,index)=>{
@@ -52,8 +48,7 @@ class FindFalconControls extends React.Component{
                     planetVehcileCount = planetVehcileCount + 1 
                     if(selectedVehicles[index]){
                     planetVehcileCount = planetVehcileCount + 1 
-                    } else{
-                        
+                    } else{                        
                         return true;
                     }
                 } else
@@ -76,14 +71,12 @@ class FindFalconControls extends React.Component{
 
     render(){
 
-
-
         return(
-
-            
+   
         <div className={styles['mainContainer']}>
             {this.props.planets.length?(
                 <Aux>
+
                 <div className={styles['Heading']}>
                     <h2>Select planets you wish to search in:</h2>
                 </div>
@@ -96,22 +89,17 @@ class FindFalconControls extends React.Component{
 
                 <div className={styles['time']}>
                 <h2>Time Taken: {this.calculateTravelTime()}</h2>
-                </div>  
-            
-            {/* </div> */}
+                </div>
 
             <div className={styles['searchButton']}>
                 <button  disabled={this.submitbtnHandler()} onClick={this.onSubmitHandler}>Find Falcone!</button>
             </div>
 
-            </Aux>):<Spinner />}
+            </Aux>)
+            :
+            <Spinner />}
         </div>
 
-      
-             
-        
-        
-     
         )
     }
 
@@ -119,6 +107,19 @@ class FindFalconControls extends React.Component{
 
 
 
+FindFalconControls.propTypes = {
+    planets: PropTypes.array.isRequired,
+    vehicles:PropTypes.array.isRequired,
+    selectedPlanets:PropTypes.array.isRequired,
+    selectedVehicles:PropTypes.array.isRequired,
+    token:PropTypes.string.isRequired,
+    fetchPlanetsAction: PropTypes.func.isRequired,
+    fetchVehiclesAction:PropTypes.func.isRequired,
+    fetchTokenAction:PropTypes.func.isRequired,
+    findFalconeAction:PropTypes.func.isRequired,
+    reset:PropTypes.func.isRequired
+  };
+  
 const mapStateToProps = (state)=>{
     return{
         planets:state.planets,
@@ -142,4 +143,4 @@ const mapDispatchToProps = (dispatch)=>{
 
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(FindFalconControls);
+export default connect(mapStateToProps,mapDispatchToProps)(ErrorHandler(FindFalconControls));

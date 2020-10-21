@@ -1,15 +1,15 @@
 import {fetchPlanets,fetchVehicles,fetchToken,findFalcone} from '../../api/api-client'
-
+import * as actionTypes from './actionTypes';
 
 
 
 export const fetchPlanetsAction = (dispatch)=>{
   
-fetchPlanets()
-  .then((res)=>{
-    console.log(res.data);
-      return dispatch({
-        type: 'FETCH_PLANETS',
+  // axios.get(`/planets`)
+  fetchPlanets()
+  .then(res=>{
+       dispatch({
+        type: actionTypes.FETCH_PLANETS,
         payload:res.data
     }) 
   })

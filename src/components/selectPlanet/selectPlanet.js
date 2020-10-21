@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Select from 'react-select';
+import PropTypes from 'prop-types';
+import * as styles from './styles.module.css'
 
 
 
@@ -31,7 +33,8 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
 
     return(
  
-        <div className="selectPlanet">
+        <div className={styles['selectPlanet']}>
+            <h3>{`Destination ${planetindex +1}`}</h3>
             <Select
              value={selectedPlanets[planetindex]!==''? {value:selectedPlanets[planetindex], label:selectedPlanets[planetindex]}: 'Select...'}
             options={planetList.map((planet)=>(
@@ -40,9 +43,9 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
             ))}
             onChange={(event)=>planetSelecthandler(event,planetindex)}
              />
-             <ul>
+             <ul className={styles.vehicleSelect}>
              {selectedPlanets[planetindex] &&  vehicles.map((vehicle,index)=>(
-                    <li>
+                    <li key={vehicle.name} className={(checkDistanceFeasibility(vehicle,selectedPlanets[planetindex]) || vehicle.total_no<=0) ? styles['disabled']:''}>
                     <label>
                     <input 
                     type="radio" 
@@ -50,11 +53,10 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
                     name={planetindex} 
                     onChange={(event)=>vehicleSelectHandler(event,index,planetindex)} 
                     disabled={checkDistanceFeasibility(vehicle,selectedPlanets[planetindex]) || vehicle.total_no<=0}
-                    checked={selectedVehicles[planetindex]===vehicle.name}
+                    checked={selectedVehicles[planetindex]===vehicle.name}                   
                     >
                     </input>
-                    {vehicle.name + '(' + vehicle.total_no +')'}
-                    
+                    {vehicle.name + '(' + vehicle.total_no +')'}                   
                     </label>
                 </li>   
                 
@@ -66,12 +68,25 @@ const SelectPlanet = ({planets,vehicles,planetindex,selectedPlanet,selectedPlane
 
 }
 
+SelectPlanet.propTypes = {
+    planets: PropTypes.array.isRequired,
+    vehicles:PropTypes.array.isRequired,
+    selectedPlanets:PropTypes.array.isRequired,
+    selectedVehicles:PropTypes.array.isRequired,
+    planetindex:PropTypes.number.isRequired,
+    selectedPlanet:PropTypes.func.isRequired,
+    selectedVehicle:PropTypes.func.isRequired
+
+  };
+  
+
 const mapStateToProps = (state)=>{
     return{
         planets:state.planets,
         vehicles:state.vehicles,
         selectedPlanets:state.selectedPlanets,
         selectedVehicles:state.selectedVehicles
+    
     }
 
 }

@@ -1,0 +1,9 @@
+.hamburger div{
+	width:30px;
+    height:3px;
+    background:white;
+    margin:10px 3px;
+    border-radius: 25px;
+	
+
+}

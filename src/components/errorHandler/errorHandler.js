@@ -1,36 +1,36 @@
 import React from 'react';
 import Aux from '../../hoc/Auxilary/Auxilary'
+import axios from '../../api/axios'
+import Modal from '../Modal/Modal';
 
-// import Modal from '../Modal/Modal';
 
- const ErrorHandler = (WrappedComponent,axios)=>{
+ const ErrorHandler = (WrappedComponent)=>{
     return class extends React.Component {
         
     state = {
-        show:false,
-        errorMessage:null
+      show:false,
+      errorMessage:null
     }
 
     acceptErrorHandler=()=>{
-        this.setState({show:false})
+      this.setState({show:false})
 
     }
 
-        componentWillMount(){
-          this.resInterceptor =  axios.interceptors.response.use(
-                res => res,
-                err => {
-                  if (err.response.status === 404) {
-                    // throw new Error(`${err.config.url} not found`);
-         
-                  let error = `${err.config.url} not found`;
-                    this.setState({show:true, errorMessage:error});
-                  }
-                  return err;
-                }
-              );
+    componentWillMount(){
+      this.resInterceptor =  axios.interceptors.response.use(
+        res => res,
+        err => {
+          if (err.response.status === 404) {         
+            let error = `${err.config.url} not found`;
+            this.setState({show:true, errorMessage:error});
+
+            }
+        return err;
+          }
+        );
               
-        }
+      }
 
         componentWillUnmount(){
 
@@ -42,28 +42,19 @@ import Aux from '../../hoc/Auxilary/Auxilary'
         render(){
             return(
                 <Aux>
-                {/* <Modal show={this.state.show} closeModal={this.acceptErrorHandler}>
-                <h1>{this.state.errorMessage}</h1>
-                </Modal> */}
-                <WrappedComponent {...this.props}/>
+                  {this.state.errorMessage?  
+                  (<Modal show={this.state.show} closeModal={this.acceptErrorHandler}>
+                  <h2>{`${this.state.errorMessage}.Please verify API connection to continue`}</h2>
+                  </Modal>):
+                  <WrappedComponent {...this.props}/> }              
                 </Aux>
         
             
-            )
-
-            
+            )            
         }
 
 
     }
-
-    
-     
-
-        
-
-    
-    
 
 }
 
