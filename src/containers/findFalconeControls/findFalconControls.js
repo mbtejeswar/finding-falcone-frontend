@@ -73,7 +73,7 @@ class FindFalconControls extends React.Component{
 
         return(
    
-        <div className={styles['mainContainer']}>
+        <div className={styles['mainContainer']} data-test='findControls'>
             {this.props.planets.length?(
                 <Aux>
 
