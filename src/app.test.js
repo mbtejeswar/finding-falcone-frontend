@@ -14,19 +14,7 @@ configure({adapter:new Adapter()});
 // }
 
 describe('App component test', ()=>{
-    let wrapper;
-    // beforeEach(()=>{
-    //     const initialState = {
-    //         planets:[{name:'Donlon', Distance:100}, {name:'Jebing', Distance:200}],
-    //         vehicles:[{name:"Space Pod", total_no:2, max_distance:200, speed:2}],
-    //         selectedPlanets:['','','',''],
-    //         selectedVehicles:['','','',''],
-    //         findFalconeResult:{},
-    //         token:'',
-    //         result:{status:false}
-    //     }
-    //     wrapper = setUp(initialState);
-    // })
+
 
 
 it('Verify whether app component is rendered and contains Layout in it', ()=>{

@@ -24,7 +24,6 @@ export default (state=initialState,action)=>{
         case actions.STORE_SELECTED_PLANET:
             let selectedPlanets = [...state.selectedPlanets]
             selectedPlanets[action.index]=  action.planetName;
-            // Reset vehicles on planet change
             var selectedVehicles = [...state.selectedVehicles];
             if(selectedVehicles[action.index]){
                 var vehicles = [...state.vehicles];

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchPlanetsAction,fetchVehiclesAction,fetchTokenAction,findFalconeAction} from '../../store/actions/fetchActions';
-import SelectPlanets from '../../components/selectPlanet/selectPlanet';
+import SelectPlanets from '../../components/selectPlanetVehicle//selectPlanetVehicle';
 import styles from './styles.module.css';
 import Spinner from '../../components/spinner/spinner';
 import ErrorHandler from '../../components/errorHandler/errorHandler';
@@ -65,9 +65,6 @@ class FindFalconControls extends React.Component{
          }
 
       }
-
-    
- 
 
     render(){
 

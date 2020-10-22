@@ -3,7 +3,7 @@ import  {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FindFalconeControls from './findFalconControls.js';
 import {findByTestAtrr, testStore} from '../../utils/index'
-import SelectPlanets  from '../../components/selectPlanet/selectPlanet';
+import SelectPlanets  from '../../components/selectPlanetVehicle/selectPlanetVehicle';
 import Spinner from '../../components/spinner/spinner';
 import { Provider } from 'react-redux';
 configure({adapter:new Adapter()});
@@ -34,7 +34,6 @@ it('It should render without errors', ()=>{
 
     expect(wrapper.length).toBe(1);
     
-  
 
 });
 
