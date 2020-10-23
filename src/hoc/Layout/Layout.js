@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header/index';
 // import {Dropdown} from '../../components/Dropdown/index';
-import FindFalconeControls from '../../containers/findFalconeControls/findFalconControls';
+import FindFalconeControls from '../../containers/findFalconeControls/findFalconeControls';
 import FindFalconeResult from '../../containers/findingFalconeResult/findingFalconeResult';
 import {Route} from 'react-router-dom';
 import Aux from '../Auxilary/Auxilary';

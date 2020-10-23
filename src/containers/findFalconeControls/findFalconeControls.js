@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchPlanetsAction,fetchVehiclesAction,fetchTokenAction,findFalconeAction} from '../../store/actions/fetchActions';
-import SelectPlanets from '../../components/selectPlanetVehicle//selectPlanetVehicle';
+import SelectPlanets from '../../components/selectPlanetVehicle/selectPlanetVehicle';
 import styles from './styles.module.css';
 import Spinner from '../../components/spinner/spinner';
 import ErrorHandler from '../../components/errorHandler/errorHandler';
 import Aux from '../../hoc/Auxilary/Auxilary';
 import PropTypes from 'prop-types';
 
-class FindFalconControls extends React.Component{
+class FindFalconeControls extends React.Component{
 
     calculateTravelTime = ()=>{
         let timeTaken = 0;
@@ -70,7 +70,7 @@ class FindFalconControls extends React.Component{
 
         return(
    
-        <div className={styles['mainContainer']} data-test='findControls'>
+        <div className={styles['mainContainer']}>
             {this.props.planets.length?(
                 <Aux>
 
@@ -104,7 +104,7 @@ class FindFalconControls extends React.Component{
 
 
 
-FindFalconControls.propTypes = {
+FindFalconeControls.propTypes = {
     planets: PropTypes.array.isRequired,
     vehicles:PropTypes.array.isRequired,
     selectedPlanets:PropTypes.array.isRequired,
@@ -140,4 +140,4 @@ const mapDispatchToProps = (dispatch)=>{
 
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(ErrorHandler(FindFalconControls));
+export default connect(mapStateToProps,mapDispatchToProps)(ErrorHandler(FindFalconeControls));
