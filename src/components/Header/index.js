@@ -20,7 +20,7 @@ function Header(props, {heading}) {
       </div>
       <div className={styles['right-container']}>
           <div onClick={props.reset} className={styles['Reset']}>Reset</div>
-          <div><a href="/">GeekTrust Home</a></div>
+          <div><a href="https://www.geektrust.in/">GeekTrust Home</a></div>
       </div>
     </header>
   );
