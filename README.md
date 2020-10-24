@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Finding Falcone
 
+## Live Project
+https://findingfalconeapp.netlify.app/
+
 ### Deployment and Execution 
     1.  You should have the following prerequisites:
     - NodeJS 14.12.0 (Any other recent versions should also work fine);
