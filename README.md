@@ -13,14 +13,14 @@ https://findingfalconeapp.netlify.app/
     - `npm install` Installs all dependencies
 
     3. To run the App use:
-        - `$ npm start` Runs the app in the development mode.<br />
+        - `$ npm start` Runs the app in the development mode.
         -  Open [http://localhost:3000](http://localhost:3000) to view it in the browser.    
 
     4. Run Unit Tests with the following command 
         - `npm test` Runs Unit Tests
 
     5. To build the app for production 
-        - Builds the app for production to the `build` folder.<br />
+        - Builds the app for production to the `build` folder.
 
 
 ### Pages Available 
