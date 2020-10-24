@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Finding Falcone
 
-## Live Project
+### Live Project
 https://findingfalconeapp.netlify.app/
 
 ### Deployment and Execution 
